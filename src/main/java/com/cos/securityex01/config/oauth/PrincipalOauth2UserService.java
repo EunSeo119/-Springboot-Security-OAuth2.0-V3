@@ -39,7 +39,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
 	private OAuth2User processOAuth2User(OAuth2UserRequest userRequest, OAuth2User oAuth2User) {
 
-		// Attribute를 파싱해서 공통 객체로 묶는다. 관리가 편함.
+		// Attribute를 파싱해서 공통 객체로 묶는다. 관리가 편함. (회원가입 강제로 진행)
 		OAuth2UserInfo oAuth2UserInfo = null;
 		if (userRequest.getClientRegistration().getRegistrationId().equals("google")) {
 			System.out.println("구글 로그인 요청~~");
@@ -51,7 +51,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 			System.out.println("네이버 로그인 요청~~");
 			oAuth2UserInfo = new NaverUserInfo((Map)oAuth2User.getAttributes().get("response"));
 		} else {
-			System.out.println("우리는 구글과 페이스북만 지원해요 ㅎㅎ");
+			System.out.println("우리는 구글과 페이스북과 네이버만 지원해요 ㅎㅎ");
 		}
 
 		//System.out.println("oAuth2UserInfo.getProvider() : " + oAuth2UserInfo.getProvider());
